@@ -8,6 +8,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { random } from 'lodash';
+import { randomColor } from './utils.js';
 export default {
   name: 'App',
   data() {
@@ -86,10 +87,14 @@ export default {
       this.camera.position.y = 0;
       this.camera.position.z = 5;
     },
+
     addSphere(coordinate, size) {
       const geometry = new THREE.SphereGeometry(size ?? 0.02);
       // const material = new THREE.MeshBasicMaterial({ color: 0xcccccc });
       const material = new THREE.MeshStandardMaterial({ color: 0xcccccc });
+      // const material = new THREE.MeshStandardMaterial({
+      //   color: parseInt(randomColor(), 16),
+      // });
       const sphere = new THREE.Mesh(geometry, material);
       sphere.position.set(coordinate.x, coordinate.y, coordinate.z);
       this.scene.add(sphere);
